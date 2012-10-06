@@ -112,6 +112,7 @@ module Capybara
         selector = Capybara::Selector.normalize(*args)
         selector.xpaths.
           map    { |path| find_in_base(selector, path) }.flatten.
+          tap    { sleep(2) }.
           select { |node| matches_options(node, options) }
       end
 
